@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Be My Valentine?</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      .floating-hearts {
+        background-image:
+          radial-gradient(circle at 10% 20%, rgba(255, 153, 200, 0.25) 0 8px, transparent 9px),
+          radial-gradient(circle at 70% 30%, rgba(255, 200, 220, 0.25) 0 10px, transparent 11px),
+          radial-gradient(circle at 40% 80%, rgba(255, 170, 210, 0.25) 0 12px, transparent 13px);
+        background-size: 280px 280px;
+      }
+
+      .heart {
+        display: inline-block;
+      }
+
+      .modal-backdrop {
+        background: rgba(15, 23, 42, 0.45);
+      }
+
+      @keyframes popIn {
+        0% { transform: translateY(20px) scale(0.96); opacity: 0; }
+        100% { transform: translateY(0) scale(1); opacity: 1; }
+      }
+
+      .pop-in {
+        animation: popIn 0.45s ease-out;
+      }
+
+      @keyframes floatSoft {
+        0% { transform: translateY(0); }
+        50% { transform: translateY(-8px); }
+        100% { transform: translateY(0); }
+      }
+
+      .float-soft {
+        animation: floatSoft 3.5s ease-in-out infinite;
+      }
+    </style>
+  </head>
+  <body class="min-h-screen bg-gradient-to-b from-rose-50 via-pink-50 to-amber-50 text-rose-900">
+    <div class="floating-hearts min-h-screen">
+      <div class="mx-auto max-w-4xl px-6 py-12">
+        <header class="text-center">
+          <p class="inline-flex items-center gap-2 rounded-full bg-white/80 px-4 py-2 text-sm font-semibold shadow-sm">
+            <span class="heart">❤</span>
+            A tiny love note just for you
+          </p>
+          <h1 class="mt-6 text-4xl font-extrabold tracking-tight sm:text-5xl">
+            Will you be my Valentine?
+          </h1>
+          <p class="mt-3 text-lg text-rose-700">
+            I made this page because you make every ordinary day feel special.
+          </p>
+        </header>
+
+        <section class="mt-10 grid gap-4 sm:grid-cols-2">
+          <div class="rounded-3xl bg-white/90 p-6 shadow-lg">
+            <h2 class="text-lg font-bold">Little things I love about you</h2>
+            <ul class="mt-3 space-y-2 text-rose-700">
+              <li>• Your smile that fixes everything.</li>
+              <li>• The way you care in small, quiet ways.</li>
+              <li>• How you make my heart feel safe.</li>
+              <li>• Your Voice — it’s my favorite sound.</li>
+            </ul>
+          </div>
+          <div class="rounded-3xl bg-white/90 p-6 shadow-lg">
+            <h2 class="text-lg font-bold">Tiny notes for you Babe</h2>
+            <div class="mt-3 grid gap-3">
+              <div class="rounded-2xl bg-rose-50 p-4 text-sm text-rose-700 shadow-sm">
+                You are my favorite notification.
+              </div>
+              <div class="rounded-2xl bg-rose-50 p-4 text-sm text-rose-700 shadow-sm">
+                If I had to choose again, I’d still choose you.
+              </div>
+              <div class="rounded-2xl bg-rose-50 p-4 text-sm text-rose-700 shadow-sm">
+                Thank you for being the soft place in my day.
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="mt-12 text-center">
+          <p class="text-lg font-semibold text-rose-800">So... will you be my Valentine?</p>
+          <div class="relative mt-6 flex flex-wrap items-center justify-center gap-4">
+            <button
+              id="yesButton"
+              class="rounded-full bg-rose-600 px-8 py-3 text-lg font-semibold text-white shadow-lg"
+            >
+              Yes 💖
+            </button>
+            <button
+              id="noButton"
+              class="rounded-full bg-white px-8 py-3 text-lg font-semibold text-rose-700 shadow-lg"
+            >
+              No 🙈
+            </button>
+          </div>
+          <p id="result" class="mt-6 text-xl font-semibold text-rose-700"></p>
+        </section>
+        <section id="loveModal" class="fixed inset-0 z-50 hidden items-center justify-center px-4">
+          <div class="modal-backdrop absolute inset-0"></div>
+          <div class="relative z-10 w-full max-w-md rounded-3xl bg-white/95 p-6 shadow-2xl pop-in">
+            <button
+              id="closeModal"
+              class="absolute right-4 top-4 rounded-full bg-rose-50 px-3 py-1 text-sm font-semibold text-rose-700"
+            >
+              Close
+            </button>
+            <div class="mt-2 grid gap-3 sm:grid-cols-2">
+              <div class="overflow-hidden rounded-2xl bg-rose-50 shadow-sm">
+                <img data-gf-photo class="h-40 w-full object-cover float-soft" alt="Her photo 1" />
+              </div>
+              <div class="overflow-hidden rounded-2xl bg-rose-50 shadow-sm">
+                <img data-gf-photo class="h-40 w-full object-cover float-soft" alt="Her photo 2" />
+              </div>
+              <div class="overflow-hidden rounded-2xl bg-rose-50 shadow-sm">
+                <img data-gf-photo class="h-40 w-full object-cover float-soft" alt="Her photo 3" />
+              </div>
+              <div class="overflow-hidden rounded-2xl bg-rose-50 shadow-sm">
+                <img data-gf-photo class="h-40 w-full object-cover float-soft" alt="Her photo 4" />
+              </div>
+              <div class="overflow-hidden rounded-2xl bg-rose-50 shadow-sm sm:col-span-2">
+                <img data-gf-photo class="h-44 w-full object-cover float-soft" alt="Her photo 5" />
+              </div>
+            </div>
+            <p class="mt-4 text-center text-rose-700">
+              I may not always show it perfectly, but every little effort I make comes from my heart. I love you, always. And whenever I see your photos, all my sadness just melts away, and I feel nothing but happiness.
+              <br>(Your babe)
+            </p>
+          </div>
+        </section>
+
+        <footer class="mt-14 text-center text-sm text-rose-600">
+        </footer>
+      </div>
+    </div>
+    <script>
+      const noButton = document.getElementById("noButton");
+      const yesButton = document.getElementById("yesButton");
+      const result = document.getElementById("result");
+      const loveModal = document.getElementById("loveModal");
+      const closeModal = document.getElementById("closeModal");
+      const gfPhotos = document.querySelectorAll("[data-gf-photo]");
+      const maxOffset = 180;
+      const gfPhotoSrcs = [
+        "5.jpg",
+        "4.jpg",
+        "3.jpg",
+        "2.jpg",
+        "1.jpg"
+      ];
+
+      function moveNoButton() {
+        const x = Math.floor((Math.random() * 2 - 1) * maxOffset);
+        const y = Math.floor((Math.random() * 2 - 1) * maxOffset);
+        noButton.style.transform = `translate(${x}px, ${y}px)`;
+      }
+
+      yesButton.addEventListener("click", () => {
+        result.textContent = "Yay! You just made my whole world brighter 💕";
+        gfPhotos.forEach((img, index) => {
+          const src = gfPhotoSrcs[index];
+          if (src) {
+            img.src = src;
+            img.classList.remove("hidden");
+          } else {
+            img.classList.add("hidden");
+          }
+        });
+        loveModal.classList.remove("hidden");
+        loveModal.classList.add("flex");
+      });
+
+      noButton.addEventListener("mouseenter", moveNoButton);
+      noButton.addEventListener("click", moveNoButton);
+
+      closeModal.addEventListener("click", () => {
+        loveModal.classList.add("hidden");
+        loveModal.classList.remove("flex");
+      });
+    </script>
+  </body>
+</html>
